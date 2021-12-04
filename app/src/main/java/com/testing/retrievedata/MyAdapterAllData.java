@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,8 +33,14 @@ public class MyAdapterAllData extends RecyclerView.Adapter<MyAdapter.MyViewHolde
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
         CountryVisaData countryVisaData = countryVisaDataArrayList.get(position);
-        holder.name2.setText(countryVisaData.name);
-        holder.visa.setText(countryVisaData.code);
+        holder.name2.setText(countryVisaData.getName());
+        holder.visa.setText(countryVisaData.getCode());
+
+        holder.visa_free.setAdapter(new SimpleAdapter(context, countryVisaData.getVisaFree(),R.layout.lines,
+                new String[]{"name", "paid"},new int[] {R.id.txtdisplayname, R.id.txtdisplay2name} ));// ((String)countryVisaData.getVisaFree().get(0).get("name"));
+
+        holder.visa_on_arrival.setAdapter(new SimpleAdapter(context,countryVisaData.getVisaOnArrival(),R.layout.lines,new String[]{"name","paid"},new int[]{R.id.txtdisplayname,R.id.txtdisplay2name}));
+        holder.visa_required.setAdapter(new SimpleAdapter(context,countryVisaData.getVisaRequired(),R.layout.lines,new String[]{"name","paid"},new int[]{R.id.txtdisplayname,R.id.txtdisplay2name}));
     }
 
     @Override

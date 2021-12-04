@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
@@ -99,13 +101,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         TextView name;
         TextView name2;
         TextView visa;
-        TextView visa_free;
+        ListView visa_free;
+        ListView visa_on_arrival;
+        ListView visa_required;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtname);
             name2 = itemView.findViewById(R.id.txtname2);
             visa = itemView.findViewById(R.id.txtvisa);
-            visa_free = itemView.findViewById(R.id.txtvisafree);
+            visa_free = itemView.findViewById(R.id.listviewvisafree);
+            visa_on_arrival = itemView.findViewById(R.id.listviewvisaonarrival);
+            visa_required = itemView.findViewById(R.id.listviewvisarequired);
         }
     }
 }

@@ -18,9 +18,14 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AllDataActivity extends AppCompatActivity {
 
@@ -69,7 +74,7 @@ public class AllDataActivity extends AppCompatActivity {
                         }
                         for(DocumentChange dc:value.getDocumentChanges()){
                             if(dc.getType()== DocumentChange.Type.ADDED){
-                                countrydetailslist.add(dc.getDocument().toObject(CountryVisaData.class));
+                                countrydetailslist.add(parseData(dc.getDocument()));
                            }
                             myAdapter2.notifyDataSetChanged();
                             if(progressDialog.isShowing())
@@ -78,4 +83,31 @@ public class AllDataActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private CountryVisaData parseData(QueryDocumentSnapshot documentSnapshot) {
+        String name = (String)documentSnapshot.getData().get("name");
+        String code = (String)documentSnapshot.getData().get("code");
+        List<HashMap<String,Object>> visaFree = (List<HashMap<String,Object>>) documentSnapshot.getData().get("visa_free");
+        List<HashMap<String,Object>> visaOnArrival = (List<HashMap<String,Object>>) documentSnapshot.getData().get("visa_on_arrival");
+        List<HashMap<String,Object>> visaRequired = (List<HashMap<String,Object>>) documentSnapshot.getData().get("visa_required");
+        return new CountryVisaData(name,
+                code,
+                visaFree,
+                visaOnArrival,
+                visaRequired
+        );
+    }
+
+    private List<VisaStatus> convertHashMapToVisaStatus(List<HashMap<String,Object>> list){
+        List<VisaStatus> data = new ArrayList<VisaStatus>();
+
+        for(HashMap<String, Object> entry : list){
+            data.add(new VisaStatus((String)entry.get("name"), (boolean)entry.get("paid")));
+        }
+
+        return data;
+
+    }
+
+
 }
