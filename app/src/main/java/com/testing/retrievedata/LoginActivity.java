@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -24,13 +29,20 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 101;
-    com.google.android.gms.common.SignInButton btng;
+    EditText mEmail, mPassword;
+    Button mLoginBtn;
+    Button mCreateBtn;
+    ImageButton btng;
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mEmail = findViewById(R.id.etemail);
+        mPassword = findViewById(R.id.etpassword);
+        mLoginBtn = findViewById(R.id.btnlogin);
+        mCreateBtn = findViewById(R.id.btnnew);
         btng = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -43,6 +55,50 @@ public class LoginActivity extends AppCompatActivity {
         btng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { signIn();
+            }
+        });
+       mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                   emailsignIn();
+                }
+            });
+
+        mCreateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,Register.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void emailsignIn()
+    {
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            mEmail.setError("Email is Required.");
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            mPassword.setError("Password cannot be Empty.");
+            return;
+        }
+        if (password.length() < 6) {
+            mPassword.setError("Password must be >=6 Characters");
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(LoginActivity.this, "Logged in Successfully.", Toast.LENGTH_SHORT).show();
+                    updateUI(null);
+
+                } else {
+                    Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //                String a=documentReference.getId().toString();
                 intent.putExtra("Country",countryName);
                 //intent.putExtra("id",a);
-                Toast.makeText(MainActivity.this,"Clickable Now",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this,"Clickable Now",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -140,4 +141,25 @@ public void filter(String text) {
     }
     myAdapter.filterList(filterList);
 }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // R.menu.mymenu is a reference to an xml file named mymenu.xml which should be inside your res/menu directory.
+        // If you don't have res/menu, just create a directory named "menu" inside res
+        getMenuInflater().inflate(R.menu.menu_item, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // handle button activities
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.log_out) {
+            // do something here
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

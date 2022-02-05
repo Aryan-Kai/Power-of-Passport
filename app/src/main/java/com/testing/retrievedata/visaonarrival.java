@@ -1,16 +1,14 @@
 package com.testing.retrievedata;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -23,73 +21,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AllDataActivity extends AppCompatActivity {
-
+public class visaonarrival extends AppCompatActivity {
+    RecyclerView recyclerView2;
     ArrayList<CountryVisaData> countrydetailslist;
-    MyAdapterAllData myAdapter2;
+    visaonarrivaladpater myAdapter2;
     FirebaseFirestore db;
-    Button btnvisafree,btnvisaonarrival,btn2visarequired;
-    String countryName2;
-    TextView cname;
+    String countryName;
+    TextView view1,view2;
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_data);
-        //progressDialog = new ProgressDialog(this);
-        //progressDialog.setCancelable(false);
-        //progressDialog.setMessage("Fetching Data....");
-        //progressDialog.show();
-        countryName2 = getIntent().getStringExtra("Country");
-        btnvisafree = findViewById(R.id.btnvisafree);
-        cname = findViewById(R.id.txtcname);
-        cname.setText(countryName2);
-        btnvisaonarrival = findViewById(R.id.btnvisaonarrival);
-        btn2visarequired = findViewById(R.id.btn2visarequired);
-        //recyclerView2 = findViewById(R.id.recylerview2);
-        //recyclerView2.setHasFixedSize(true);
-        //recyclerView2.setLayoutManager(new LinearLayoutManager(this));
-
-//        recyclerView2.setAdapter(myAdapter2);
-
-        btnvisafree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AllDataActivity.this,visafree.class);
-                intent.putExtra("Country",countryName2);
-                startActivity(intent);
-            }
-        });
-        btnvisaonarrival.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AllDataActivity.this,visaonarrival.class);
-                intent.putExtra("Country",countryName2);
-                startActivity(intent);
-            }
-        });
-        btn2visarequired.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new Intent(AllDataActivity.this,visarequired.class);
-                if(countryName2.isEmpty()) {
-                    Toast.makeText(AllDataActivity.this,"Not null",Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    intent2.putExtra("Country", countryName2);
-                    startActivity(intent2);
-                }
-            }
-        });
+        setContentView(R.layout.activity_visaonarrival);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching Data....");
+        progressDialog.show();
+        progressDialog.dismiss();
+        view1 = findViewById(R.id.txtvoacountryname);
+        view2 = findViewById(R.id.txtvoastatus);
+        countryName = getIntent().getStringExtra("Country");
+        recyclerView2 = findViewById(R.id.recylerview2);
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
         countrydetailslist = new ArrayList<CountryVisaData>();
-       // myAdapter2 = new MyAdapterAllData(AllDataActivity.this, countrydetailslist);
-        //EventChangeListener();
-    //    EventChangeListener2();
+        myAdapter2 = new visaonarrivaladpater(visaonarrival.this, countrydetailslist);
+        recyclerView2.setAdapter(myAdapter2);
+        EventChangeListener();
     }
 
-/*    private void EventChangeListener() {
+    private void EventChangeListener() {
         db.collection("visa_data").whereEqualTo("name",countryName)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -104,7 +67,7 @@ public class AllDataActivity extends AppCompatActivity {
                         for(DocumentChange dc:value.getDocumentChanges()){
                             if(dc.getType()== DocumentChange.Type.ADDED){
                                 countrydetailslist.add(parseData(dc.getDocument()));
-                           }
+                            }
                             myAdapter2.notifyDataSetChanged();
                             if(progressDialog.isShowing())
                                 progressDialog.dismiss();
@@ -112,7 +75,6 @@ public class AllDataActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private CountryVisaData parseData(QueryDocumentSnapshot documentSnapshot) {
         String name = (String)documentSnapshot.getData().get("name");
         String code = (String)documentSnapshot.getData().get("code");
@@ -126,7 +88,6 @@ public class AllDataActivity extends AppCompatActivity {
                 visaRequired
         );
     }
-
     private List<VisaStatus> convertHashMapToVisaStatus(List<HashMap<String,Object>> list){
         List<VisaStatus> data = new ArrayList<VisaStatus>();
 
@@ -136,7 +97,5 @@ public class AllDataActivity extends AppCompatActivity {
 
         return data;
 
-    }*/
-
-
+    }
 }

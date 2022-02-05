@@ -10,6 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RetrieveData">
         <activity
+            android:name=".visarequired"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.visarequired"
+            android:exported="false"
+            android:label="@string/title_activity_visarequired" />
+        <activity
+            android:name=".visaonarrival"
+            android:exported="false" />
+        <activity
+            android:name=".visafree"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
             android:name=".AllDataActivity"
             android:exported="false" />
         <activity
@@ -26,8 +42,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

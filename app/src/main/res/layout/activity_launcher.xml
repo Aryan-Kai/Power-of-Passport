@@ -4,22 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/map"
     tools:context=".LauncherActivity">
+
     <ImageView
         android:id="@+id/img_open"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/asset"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="149dp"
+        android:src="@drawable/asset" />
 
     <TextView
         android:id="@+id/txt_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="POWER TO DECIDE"
         android:layout_below="@+id/img_open"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:textSize="20sp"
-        android:fontFamily="monospace"/>
+        android:layout_marginTop="64dp"
+        android:fontFamily="monospace"
+        android:text="POWER TO DECIDE"
+        android:textSize="20sp" />
 </RelativeLayout>

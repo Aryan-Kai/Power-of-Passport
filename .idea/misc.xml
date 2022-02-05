@@ -5,12 +5,22 @@
       <map>
         <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_all_data.xml" value="0.264" />
         <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_country_list.xml" value="0.1" />
-        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_launcher.xml" value="0.25416666666666665" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_launcher.xml" value="0.25" />
         <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/item.xml" value="0.25416666666666665" />
-        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/item2.xml" value="0.25416666666666665" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_visafree.xml" value="0.25" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_visaonarrival.xml" value="0.17083333333333334" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/activity_visarequired.xml" value="0.17083333333333334" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/item.xml" value="0.25" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/item2.xml" value="0.264" />
         <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/lines.xml" value="0.25416666666666665" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/visa_freelines.xml" value="0.23854166666666668" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/visafreeitem.xml" value="0.23854166666666668" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/visaonarrivalitem.xml" value="0.2504528985507246" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/visaonarrivallines.xml" value="0.2504528985507246" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/visarequireditem.xml" value="0.2504528985507246" />
+        <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/layout/vsiarequiredlines.xml" value="0.12604166666666666" />
         <entry key="..\:/DEVELOPMENT/RetrieveData/app/src/main/res/menu/menu_item.xml" value="0.25416666666666665" />
       </map>
     </option>

@@ -4,18 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/map"
     tools:context=".AllDataActivity">
 
-    <TextView
-        android:id="@+id/txtcname"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylerview2"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/map">
+
+        <TextView
+            android:id="@+id/txtcname"
+            android:layout_width="339dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="40dp"
+            android:text="Country"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnvisafree"
+            android:layout_width="175dp"
+            android:layout_height="68dp"
+            android:layout_marginTop="96dp"
+            android:backgroundTint="@color/passport_auncher_background"
+            android:text="Visa Free"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.553"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtcname"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btnvisaonarrival"
+            android:layout_width="175dp"
+            android:layout_height="68dp"
+            android:layout_marginBottom="43dp"
+            android:backgroundTint="@color/passport_auncher_background"
+            android:text="Visa On Arrival"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.553"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnvisafree"
+            app:layout_constraintVertical_bias="0.233"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn2visarequired"
+            android:layout_width="179dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/passport_auncher_background"
+            android:text="Visa Required"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.565"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnvisaonarrival"
+            app:layout_constraintVertical_bias="0.279"
+            tools:ignore="HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

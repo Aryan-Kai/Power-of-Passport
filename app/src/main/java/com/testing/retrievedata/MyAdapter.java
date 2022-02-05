@@ -107,11 +107,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtname);
-            name2 = itemView.findViewById(R.id.txtname2);
-            visa = itemView.findViewById(R.id.txtvisa);
+            name2 = itemView.findViewById(R.id.txtcname);
+            visa_on_arrival =itemView.findViewById(R.id.listviewvisaonarrival);
             visa_free = itemView.findViewById(R.id.listviewvisafree);
-            visa_on_arrival = itemView.findViewById(R.id.listviewvisaonarrival);
-            visa_required = itemView.findViewById(R.id.listviewvisarequired);
+            visa_required = itemView.findViewById(R.id.listviewvisaonarrival);
         }
     }
 }
