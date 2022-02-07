@@ -86,7 +86,7 @@
         android:background="@color/passport_auncher_background"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:padding="10dp"
         android:textColorHint="@android:color/black"
         app:layout_constraintHorizontal_bias="0.377"
